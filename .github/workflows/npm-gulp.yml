@@ -61,18 +61,20 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
  
-    
     steps:
     - uses: actions/download-artifact@master
       with:
         name: page
         path: .
 
-    - uses: actions/configure-pages@v1
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
 
-    - uses: actions/upload-pages-artifact@v1
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
         path: .
-        
-    - id: deployment
-      uses: actions/deploy-pages@main
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
