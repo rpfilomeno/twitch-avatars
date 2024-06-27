@@ -184,15 +184,15 @@ export default class UserSprite extends BaseSprite {
 
     this.type = 'user';
     // Default character type
-    // this.changeCharacter(PEASANT);
-    this.changeCharacter(VTFAN);
+    this.changeCharacter(PEASANT);
+    //this.changeCharacter(VTFAN);
 
     this.user = config.user;
     this.flags = config.flags;
 
     if (this.flags && this.flags.subscriber) {
-      //this.changeCharacter(KNIGHT);
-      this.changeCharacter(VTSUPERFAN);
+      this.changeCharacter(KNIGHT);
+      //this.changeCharacter(VTSUPERFAN);
     }
 
     this.stillFrame = config.frame;

@@ -133,7 +133,7 @@ export default class Game extends Phaser.Scene {
   }
 
   initComfy() {
-    const channel = phaserHelpers.getUrlParam('channel') || 'goldzulu';
+    const channel = phaserHelpers.getUrlParam('channel') || 'godieph';
     ComfyJS.Init(channel, null, [channel]);
 
     ComfyJS.onJoin = (user, self) => {

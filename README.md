@@ -1,4 +1,4 @@
-# [Twitch Interactive Chat Overlay](https://goldzulu.github.io/twitch-interactive-chat)
+# THIS IS A FORK OF [Twitch Interactive Chat Overlay](https://goldzulu.github.io/twitch-interactive-chat)
 
 ![Screenshot](preview.png)
 
