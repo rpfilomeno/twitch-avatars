@@ -42,31 +42,37 @@ jobs:
       uses: borales/actions-yarn@v4
       with:
         cmd: dist # will run `yarn dist` command
+    
+    - uses: actions/upload-artifact@master
+      with:
+        name: page
+        path: dist
+        if-no-files-found: error
 
   
   deploy:
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
     # Add a dependency to the build job
     needs: build
-
 
     # Deploy to the github-pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-    # Specify runner + deployment step
-    runs-on: ubuntu-latest
+ 
     
     steps:
-    - name: Setup Pages
-      uses: actions/configure-pages@v5
-
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+    - uses: actions/download-artifact@master
       with:
-        # Upload entire dist
-        path: './dist'
+        name: page
+        path: .
 
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+    - uses: actions/configure-pages@v1
+
+    - uses: actions/upload-pages-artifact@v1
+      with:
+        path: .
+        
+    - id: deployment
+      uses: actions/deploy-pages@main
